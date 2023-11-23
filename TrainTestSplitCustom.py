@@ -9,6 +9,8 @@ def func(output_folder,images,obj_train_data,test_ratio):
     os.makedirs(os.path.join(output_folder, 'train','txt'), exist_ok=True)
     os.makedirs(os.path.join(output_folder, 'test','txt'), exist_ok=True)
     os.makedirs(os.path.join(output_folder, 'test','images'), exist_ok=True)
+    os.makedirs(os.path.join(output_folder, 'val','txt'), exist_ok=True)
+    os.makedirs(os.path.join(output_folder, 'val','images'), exist_ok=True)
 
 
     image_list = [file for file in os.listdir(images) if os.path.isfile(os.path.join(images, file))]
@@ -28,6 +30,9 @@ def func(output_folder,images,obj_train_data,test_ratio):
         if i < num_files_to_test:
             destination_folder_images = os.path.join(output_folder, 'test','images')
             destination_folder_txt = os.path.join(output_folder, 'test','txt')
+        elif i < 2*num_files_to_test:
+            destination_folder_images = os.path.join(output_folder, 'val','images')
+            destination_folder_txt = os.path.join(output_folder, 'val','txt')
         else:
             destination_folder_images = os.path.join(output_folder, 'train','images')
             destination_folder_txt = os.path.join(output_folder, 'train','txt')
